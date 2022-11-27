@@ -13,7 +13,6 @@ def fenduan_linear( a, b, c, d, x):
     x[(c <= x) & (x <= b)] = 1.2* (x[(c <= x) & (x <= b)] ) +20
     x[(d <= x) & (x <= c)] = 2* x[(d <= x) & (x <= c)]+15
     return ff(x)
-
 def nonlinear(a, b, x):
     return ff(a * x ** b)
 plt.rcParams['font.sans-serif']=['SimHei']
