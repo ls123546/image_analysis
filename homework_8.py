@@ -13,9 +13,9 @@ r, f = cv2.threshold(distTransform, 0.2 * distTransform.max(), 255, 0)
 b = cv2.dilate(p, k, iterations=3)
 f = np.uint8(f)
 r, m = cv2.connectedComponents(f)
-unknown = cv2.subtract(b, f)
+u= cv2.subtract(b, f)
 m= m + 1
-m[unknown== 255] = 0
+m[u== 255] = 0
 m = cv2.watershed(img, m)
 result = img.copy()
 result[m == -1] = [255, 0, 0]
