@@ -27,7 +27,7 @@ def getV1(m, r, eps, w, maxV1):
     A = np.mean(m, 2)[V1 >= ht[1][lmax]].max()
     V1 = np.minimum(V1*w, maxV1)
     return V1, A
-def deHaze(m, r=27, eps=0.001, w=0.9, maxV1=0.8):
+def deHaze(m, r=50, eps=0.001, w=0.9, maxV1=0.8):
     Y = np.zeros(m.shape)
     V1, A = getV1(m, r, eps, w, maxV1)
     for k in range(3):
@@ -41,7 +41,7 @@ img_in = cv2.cvtColor(img_in.astype(np.uint8), cv2.COLOR_BGR2RGB)
 defog_gamma = cv2.cvtColor(defog_gamma.astype(np.uint8), cv2.COLOR_BGR2RGB)
 plt.rcParams['font.sans-serif']=['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
-fig = plt.figure(figsize=(18, 12))
+fig = plt.figure(figsize=(20, 15))
 plt.subplot(121)
 plt.title('原图', fontsize=15)
 plt.imshow(img_in)
