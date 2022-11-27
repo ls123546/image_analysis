@@ -27,7 +27,7 @@ def wiener_filter(img, kernel, K):
 	dummy = np.abs(ifft2(dummy))
 	return dummy
 
-def gaussian_kernel(kernel_size ):
+def gaussian_kernel(kernel_size):
 	h = gaussian(kernel_size, kernel_size / 3).reshape(kernel_size, 1)
 	h = np.dot(h, h.transpose())
 	h /= np.sum(h)
@@ -41,11 +41,15 @@ blurred_img = blur(grayImage, kernel_size = 7)
 noisy_img = add_gaussian_noise(blurred_img, sigma = 25)
 kernel = gaussian_kernel(5)
 result1 = wiener_filter(noisy_img, kernel, K = 0)
-plt.figure(figsize=(10, 12))
-plt.subplot(221), plt.imshow(grayImage, 'gray'),
-plt.subplot(222), plt.imshow(result1, 'gray'),
 result2 = wiener_filter(noisy_img, kernel, K = 5)
-plt.subplot(223), plt.imshow(result2, 'gray'),
 result3 = wiener(noisy_img, (5, 5))
-plt.subplot(224), plt.imshow(result3, 'gray'),
+plt.figure(figsize=(10, 12))
+plt.subplot(221)
+plt.imshow(grayImage, 'gray'),
+plt.subplot(222)
+plt.imshow(result1, 'gray'),
+plt.subplot(223)
+plt.imshow(result2, 'gray'),
+plt.subplot(224)
+plt.imshow(result3, 'gray'),
 plt.show()
